@@ -1,0 +1,40 @@
+<app-header></app-header>
+<div class="container">
+
+  <!-- Page Heading -->
+  
+ <div class="row">
+      <div class="bg-success text-white text-center py-5  mb-5">
+        <h2 class="fw-bold">Your Recipe Collection!!</h2>
+      </div>
+ </div>
+
+  <!-- Recipes Grid -->
+  <div class="row g-4 justify-content-start">
+
+    <!-- 1 Recipe Card -->
+     @if(allRecipes.length>0){
+  @for (item of allRecipes; track $index) {
+        <div class="col-md-3 col-sm-6">
+      <div class="text-center">
+        <img [src]="item?.recipeImage" class="img-fluid rounded recipe-img">
+     <div  class="d-flex align-items-center justify-content-between">
+          <p class="fw-semibold mt-2">{{item?.recipeName}}</p>
+         <button type="button" (click)="removeSaveRecipe(item?._id)" class="border-0"> <i class="fa-solid fa-trash text-danger "></i></button>
+     </div>
+      </div>
+    </div>
+     }
+     }
+     @else {
+      <p class="fw-bold"> Save Recipe IS Empty</p>
+     }
+    
+  
+
+
+  </div>
+
+</div>
+
+<app-footer></app-footer>
