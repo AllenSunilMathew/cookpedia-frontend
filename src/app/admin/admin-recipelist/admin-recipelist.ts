@@ -9,21 +9,29 @@ import { Apiservices } from '../../services/apiservices';
 })
 export class AdminRecipelist {
   api = inject(Apiservices)
-  allRecipies:any = []
-  searchKey:string = ""
- 
-  
- 
-  ngOnInit(){
+  allRecipies: any = []
+  searchKey: string = ""
+recipe: any;
+recipeId: any;
+
+
+
+  ngOnInit() {
     this.getAllrecipies()
   }
- 
-  getAllrecipies (){
-    this.api.getallrecipesAPI().subscribe((res:any)=>{
+
+  getAllrecipies() {
+    this.api.getallrecipesAPI().subscribe((res: any) => {
       this.allRecipies = res
       console.log(this.allRecipies);
-      
+
     })
   }
+  removeRecipe(id: string) {
+    this.api.deleteeRecipeApi(id).subscribe((res) => {
+      alert("recipe removed!!!!!!!")
+      this.getAllrecipies()
+    })
 
+  }
 }

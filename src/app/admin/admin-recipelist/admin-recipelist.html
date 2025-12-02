@@ -4,7 +4,12 @@
             <app-admin-sidebar />
         </div>
         <div class="col-lg-10 p-3">
-            <h1 class="my-5 text-center">All Recipies</h1>
+            <h1 class="my-5 text-center">
+           @if(recipeId) {
+            update
+           }@else {
+            add  }  Recipies Details
+            </h1>
             <div class="d-flex justify-content-between align-items-center">
                 <button routerLink="/admin/recipe/add" class="btn btn-primary">+ Add Recipies</button>
                 <input  [(ngModel)]="searchKey"  type="text" class="form-control w-25" placeholder="search By Recipe Name">
@@ -22,15 +27,15 @@
                 <tbody>
                     @for (item of allRecipies | search:searchKey; track $index; let i=$index) {
                           <tr>
-                        <th scope="row">{{i+1}}</th>
-                        <td>{{item?.name}}</td>
-                        <td><img [src]="item?.image"
-                                width="50px" height="50px" alt=""></td>
-                        <td>{{item?.cuisine}}</td>
+                        <th class="row">{{i+1}}</th>
+                        <td>{{recipe?.name}}</td>
+                        <td><img [src]="recipe?.image"
+                                width="50px" height="50px" alt="recipe"></td>
+                        <td>{{recipe?.cuisine}}</td>
                         <td>
                             <a routerLink="/admin/recipe/{{item?._id}}/edit" class="btn"><i
                                     class="fa-solid fa-edit text-primary"></i></a>
-                            <button class="btn"><i class="fa-solid fa-trash text-danger"></i></button>
+                            <button (click)="removeRecipe(recipe._id)" class="btn"><i class="fa-solid fa-trash text-danger"></i></button>
                         </td>
                     </tr>
                     }

@@ -110,4 +110,25 @@ export class Apiservices {
           return this.http.get(`${this.serverURl}/feedback/${id}/edit?status=${status}`,this.appendToken())
 
  }
+
+// recipe/add
+
+addRecipeApi(recipe:RecipeModel){
+  return this.http.post(`${this.serverURl}/recipes/add`,recipe,this.appendToken())
+}
+
+//delete recipe
+
+deleteeRecipeApi(recipeId:string){
+  return this.http.delete(`${this.serverURl}/recipes/${recipeId}`, this.appendToken())
+}
+
+
+//edit
+
+editRecipeApi(recipeId:string,recipe:RecipeModel){
+    return this.http.put(`${this.serverURl}/recipes/${recipeId}`, this.appendToken())
+
+} 
+
 }

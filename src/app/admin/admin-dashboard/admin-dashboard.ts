@@ -9,8 +9,15 @@ import * as Highcharts from 'highcharts';
 export class AdminDashboard {
 selected = new Date()
 chartOptions: Highcharts.Options = {}; // Required
-constructor(){
-  
-}
 
+isSidebarOpen:boolean=true
+
+constructor(){
+  this.chartOptions={
+    
+  }
+}
+toggleSidebar(){
+  this.isSidebarOpen=!this.isSidebarOpen
+}
 }
