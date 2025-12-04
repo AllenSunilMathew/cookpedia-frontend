@@ -131,4 +131,28 @@ editRecipeApi(recipeId:string,recipe:RecipeModel){
 
 } 
 
+
+
+
+
+
+
+
+
+
+
+//chart
+getChartData(){
+  this.getAdminAllDownloadApi().subscribe((res:any)=>{
+    let downloadListArray:any=[]
+    res.forEach((item:any)=>{
+      downloadListArray.push({name: item.recipe, y: item.recipeCount})
+    })
+    console.log(downloadListArray);
+    localStorage.setItem("chart",JSON.stringify(downloadListArray))
+    
+  })
+}
+
+
 }
